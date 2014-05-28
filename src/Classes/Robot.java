@@ -1,29 +1,24 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Classes;
 
 /**
  *
- * @author andres
+ * @author Andres Percy Chavez O.
  */
 public class Robot {
-    private int limitx;
-    private int limity;
-    private int posx;
-    private int posy;
-    private String orientation; //  N=norte E=este S=sur O=oeste
-    private String displacement;
+    private int limitx;         //tamanio maximo en coordenada x del rectangulo a explorar
+    private int limity;         //tamanio maximo en coordenada y del rectangulo a explorar
+    private int posx;           //posicion en coordenada x del robot
+    private int posy;           //posicion en coordenada y del robot
+    private String orientation; //orientacion del robot  N=norte E=este S=sur O=oeste
+    private String displacement;//cadena contiene el desplazamiento total del robot (LLMMRMLM)
+
     public Robot(){
-    
+
     }
     
-    public Robot(int posx, int posy, String orientation){
-        this.posx = posx;
-        this.posy = posy;
-        this.orientation = orientation;
-    }
+    //Metodo privado que permite fijar la rotacion del robot 
+    //@left_right = L,R
+    //cambiamos la rotacion del robot segun si recibe L o R
     private void rotateRobot(char left_rigth){
         if (left_rigth == 'L'){
             switch (this.orientation) {
@@ -59,6 +54,7 @@ public class Robot {
         }
         
     }
+    //Metodo que mueve el robot segun la orientacion que tiene
     private void moveRobot(){
         
         switch (this.orientation) {
@@ -75,6 +71,7 @@ public class Robot {
                     this.posy++;
                     break;
             }
+        //Salida del sistema en caso de que el robot mediante su desplazamiento salgan fuera de los limites del Rectangulo
         if(!((this.posx >=0 && this.posx <=this.limitx) && (this.posy >=0 && this.posy <=this.limity))){
             System.out.println("Error can't move out of range");
             System.exit(0);
@@ -108,21 +105,31 @@ public class Robot {
     }
     public void setDisplacement(String displacement){
         this.displacement = displacement;
+        //movemos el robot
         Displacement();
+        //mostramos la posicion actual del robot actual
         diplayCurrentPosition();
         
     }
+    //Metodo que desplaza al robot desde su posicion inicial hasta terminar de 
+    //leer caracter por caracter la variable @displacement(LLMMRRLLMLM)
     private void Displacement(){
+        //Caracter el cual almacenara el tipo de accion (L,R,M)
         char displac;
+        //recorremos todos los caracteres del @displacement (LLMMRRLMMML)
         for (int i = 0; i< this.displacement.length(); i++){
+            //Obtenemos el caracter
             displac = this.displacement.charAt(i);
+            //si es M el caracter movemos el robot
             if('M' == displac){
                 moveRobot();
             }else{
+                //caso contrarion solo lo rotamos en su posicion actual
                 rotateRobot(displac);
             }
         }
     }
+    //Metodo de impresion de la posicion actual del robot
     private void diplayCurrentPosition(){
         System.out.print(this.posx + " "+ this.posy+ " ");
         System.out.println(this.orientation);
