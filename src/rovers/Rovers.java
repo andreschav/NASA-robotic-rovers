@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 /**
  *
@@ -20,7 +21,10 @@ public class Rovers {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        File f = new File( "/home/andres/rovers_input.txt" );
+        Scanner path=new Scanner(System.in); 
+        System.out.println("introduzca ruta y archivo(/home/andres/rovers_input.txt):"); 
+        String ruta=path.nextLine();
+        File f = new File( ruta );
         BufferedReader entrada;
         try {
             entrada = new BufferedReader( new FileReader( f ) );

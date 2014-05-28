@@ -1,4 +1,44 @@
-NASA-robotic-rovers
-===================
+JAVA APP
+===========
 
-JAVA app
+`CODIGO FUENTE` 
+
+Applicacion realizada con IDE Netbeans 7.3.1, usa JDK 1.7 
+ Para iniciar la aplicacion debe intruducir el path donde se encuentra el archivo con las variables para el desplazamiento del robot, luego de esto el sistema mostrara como resultado las posiciones y orientacion de destino final de cada uno de los robots.
+
+
+
+Example
+-------
+
+```java
+	run:
+	introduzca ruta y archivo(/home/andres/rovers_input.txt):
+	/home/andres/rovers_input.txt
+	
+
+```
+
+Would produce the following source output:
+
+```java
+	1 3 N
+	1 5 E
+	BUILD SUCCESSFUL (total time: 11 seconds)
+```
+
+
+
+JAR
+--------
+Para ejecutar la aplicacion desde el archivo jar
+
+
+```terminal	
+	$ java -jar "/ruta_al_archivo_jar/Rovers.jar"
+	introduzca ruta y archivo(/home/andres/rovers_input.txt):
+	/home/andres/rovers_input.txt
+	1 3 N
+	1 5 E
+```
+
